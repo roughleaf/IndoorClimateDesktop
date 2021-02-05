@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace IndoorClimateDesktop.Avalonia.ViewModels
 {
@@ -29,14 +30,14 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 
         public ClimateDataViewModel()
         {
-            ZeroText = "Test";
+            ZeroText = "Whatever";
             NodeData = new ClimateData { macAddress = "Test0" };
         }
 
         public void ButtonPushed()
         {
-            ZeroText = "You pushes it";
-            NodeData = new ClimateData { macAddress = "Test1" };
+            ZeroText = "You pushed it";
+            NodeData = new ClimateData { macAddress = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey") };
         }
 
     }
