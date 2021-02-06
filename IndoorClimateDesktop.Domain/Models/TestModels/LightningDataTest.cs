@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData.Models
+namespace IndoorClimateDesktop.Domain.Models.TestModels
 {
-    public class ApiLightningData
+    public class LightningDataTest
     {
         public int LightningDistance { get; set; }
         public string DateStamp { get; set; }

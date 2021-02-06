@@ -4,12 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="IndoorClimateDesktop.Avalonia.Views.ClimateDataView">
-  <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" ShowGridLines="True">
+  <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*" ShowGridLines="True">
     <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding ZeroText}"/>
-    <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding NodeData.macAddress}"/>
+    <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding NodeData.MacAddress}"/>
     <Button Grid.Column="1"
             Grid.Row="0"
             Content="Push Me"
             Command="{Binding ButtonPushed}"/>
+    <StackPanel Grid.Column="0" Grid.Row="1" Background="Aqua">
+      <ListBox Items="{Binding NodeDataTest.DisplayStuff}"/>
+      <!--<ItemsControl Items="{Binding NodeData.NodeData}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ListBox Items="{Binding NodeData[9]}"/>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>-->
+    </StackPanel>
   </Grid>
 </UserControl>

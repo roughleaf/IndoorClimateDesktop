@@ -8,8 +8,8 @@ namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData.Models
 {
     public class ApiClimateData
     {
-        public string macAddress { get; set; }
-        public IEnumerable<ApiNodeData> NodeData { get; set; }
-        public IEnumerable<ApiLightningData> LightningData { get; set; }
+        public string MacAddress { get; set; }
+        public IList<ApiNodeData> NodeData { get; set; }
+        public IList<ApiLightningData> LightningData { get; set; }
     }
 }

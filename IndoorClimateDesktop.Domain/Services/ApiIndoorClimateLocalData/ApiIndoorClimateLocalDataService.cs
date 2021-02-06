@@ -1,4 +1,5 @@
-﻿using IndoorClimateDesktop.Services.ApiIndoorClimateLocalData.Models;
+﻿using IndoorClimateDesktop.Domain.Models;
+using IndoorClimateDesktop.Services.ApiIndoorClimateLocalData.Models;
 using IndoorClimateDesktop.Services.TCP;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,13 @@ namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData
 {
     public class ApiIndoorClimateLocalDataService
     {
-        public static IEnumerable<ApiClimateData> GetLocalClimateData(string apiKey)
+        public static ClimateData GetLocalClimateData()
         {
             string JsonString = IndoorClimateTcpServer.Listen(13000);
 
-            ApiClimateData apiClimateData = JsonSerializer.Deserialize<ApiClimateData>(JsonString);
+            ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);
 
-            return (IList<ApiClimateData>)apiClimateData;
+            return apiClimateData;
         }
     }
 }
