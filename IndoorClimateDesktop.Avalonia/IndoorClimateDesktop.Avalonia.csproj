@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IndoorClimateDesktop.Domain\IndoorClimateDesktop.Domain.csproj" />
+    <ProjectReference Include="..\IndoorClimateDesktop.Services\IndoorClimateDesktop.Services.csproj" />
   </ItemGroup>
 </Project>
