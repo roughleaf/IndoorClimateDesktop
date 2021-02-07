@@ -14,5 +14,6 @@ namespace IndoorClimateDesktop.Domain.Models
         public int BME280Humididty { get; set; }
         public float DS18B20Temperature { get; set; }
         public int RainCount { get; set; }
+        public bool IsPresent { get; set; }
     }
 }

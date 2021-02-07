@@ -16,5 +16,6 @@ namespace IndoorClimateDesktop.Domain.Models.TestModels
         public string BME280Humididty { get; set; }
         public string DS18B20Temperature { get; set; }
         public string RainCount { get; set; }
+        public bool IsPresent { get; set; }
     }
 }

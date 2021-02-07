@@ -18,6 +18,18 @@ namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData
 
             ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);
 
+            for (int i = 0; i < 10; i++)
+            {
+                if (apiClimateData.NodeData[i].DateStamp == "")
+                {
+                    apiClimateData.NodeData[i].IsPresent = false;
+                }
+                else
+                {
+                    apiClimateData.NodeData[i].IsPresent = true;
+                }
+            }
+
             return apiClimateData;
         }
     }
