@@ -3,21 +3,29 @@
         xmlns:vm="using:IndoorClimateDesktop.Avalonia.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
         x:Class="IndoorClimateDesktop.Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="IndoorClimateDesktop.Avalonia"
-        Content="{Binding Content}">
+        Width="800"
+        Height="480">
   <Grid ColumnDefinitions="*"
-        RowDefinitions="100,*"
+        RowDefinitions="30,*"
         ShowGridLines="True">
     <Grid ColumnDefinitions="*,*,*"
         RowDefinitions="*"
         ShowGridLines="True"
         Grid.Row="1">
       <UserControl Grid.Column="0"
-                   Background="green"
-                   Content="{Binding Content}">
+                   Content="{Binding NodeContent}">
+      </UserControl>
+      <UserControl Grid.Column="1"
+                  Background="Aqua"
+                  Content="{Binding AirQualityContent}">
+      </UserControl>
+      <UserControl Grid.Column="2"
+                  Background="DarkGray"
+                  Content="{Binding WeatherForcastContent}">
       </UserControl>
     </Grid>
   </Grid>
