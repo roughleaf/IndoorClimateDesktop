@@ -2,67 +2,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="266" d:DesignHeight="480"
              x:Class="IndoorClimateDesktop.Avalonia.Views.ClimateDataView"
              Foreground="White"
              Background="Black"
              FontSize="18">
-  
-  
-  <Grid ColumnDefinitions="*"
-        RowDefinitions="40,40,*"
-        ShowGridLines="false">
-    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding NodeData.MacAddress}"/>
-    <Button Grid.Column="1"
-            Grid.Row="0"
-            Content="Listen for data"
-            Command="{Binding ButtonPushed}"/>
-    <StackPanel Grid.Column="0" Grid.Row="2"             
-                Orientation="Horizontal"
-                Spacing="10">
-      <StackPanel Orientation="Vertical">
-        <TextBlock Text="{Binding NodeData.NodeData[0].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[1].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[2].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[3].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[4].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[5].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[6].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[7].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[8].IsPresent}"/>
-        <TextBlock Text="{Binding NodeData.NodeData[9].IsPresent}"/>
-      </StackPanel>
-      
-      <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                      IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
-        <ContentControl.ContentTemplate>
-          <DataTemplate>
-            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Temperature: "/>
-              <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding DS18B20Temperature}"/>
-              <TextBlock Grid.Row="1" Grid.Column="0" Text="Humidity: "/>
-              <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding BME280Humididty}"/>
-              <TextBlock Grid.Row="2" Grid.Column="0" Text="Pressure: "/>
-              <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BME280Pressure}"/>
-            </Grid> 
-          </DataTemplate>
-        </ContentControl.ContentTemplate>
-      </ContentControl>
 
-      <ContentControl Content="{Binding NodeData.NodeData[0]}"
-                      IsVisible="{Binding NodeData.NodeData[0].IsPresent}">
-        <ContentControl.ContentTemplate>
-          <DataTemplate>
-            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
-              <TextBlock Grid.Row="0" Grid.Column="0">First Name:</TextBlock>
-              <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BME280Temperature}"/>
-              <TextBlock Grid.Row="1" Grid.Column="0">Last Name:</TextBlock>
-              <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastName}"/>
-            </Grid>
-          </DataTemplate>
-        </ContentControl.ContentTemplate>
-      </ContentControl>
-      
-    </StackPanel>
+  <Grid ColumnDefinitions="*"
+        RowDefinitions="Auto,Auto,Auto,*"
+        ShowGridLines="True">
+    <DockPanel Grid.Column="0" Grid.Row="0">
+      <Button DockPanel.Dock="Top"
+              Content="Listen for data"
+              Command="{Binding ButtonPushed}"/>
+    </DockPanel>
+    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding NodeData.MacAddress}" TextAlignment="Center"/>
+
+    <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*">
+      <CheckBox IsChecked="{Binding NodeData.NodeData[0].IsPresent}" IsEnabled="False" Grid.Column="0"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[1].IsPresent}" IsEnabled="False" Grid.Column="1"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[2].IsPresent}" IsEnabled="False" Grid.Column="2"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[3].IsPresent}" IsEnabled="False" Grid.Column="3"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[4].IsPresent}" IsEnabled="False" Grid.Column="4"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[5].IsPresent}" IsEnabled="False" Grid.Column="5"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[6].IsPresent}" IsEnabled="False" Grid.Column="6"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[7].IsPresent}" IsEnabled="False" Grid.Column="7"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[8].IsPresent}" IsEnabled="False" Grid.Column="8"/>
+      <CheckBox IsChecked="{Binding NodeData.NodeData[9].IsPresent}" IsEnabled="False" Grid.Column="9"/>
+    </Grid>
+
+    <Grid RowDefinitions="*" ColumnDefinitions="*,*" ShowGridLines="True" Grid.Row="3">
+      <StackPanel Orientation="Vertical"
+              Spacing="15">
+        <ContentControl Content="{Binding NodeData.NodeData[0]}"
+                      IsVisible="{Binding NodeData.NodeData[0].IsPresent}"
+                        Grid.Column="0">
+          <ContentControl.ContentTemplate>
+            <DataTemplate>
+              <Grid ColumnDefinitions="*"
+                    RowDefinitions="Auto, Auto, Auto"
+                    ShowGridLines="True"
+                    Margin="10,10,10,10">
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                  <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
+                  <TextBlock Text="{Binding BME280Humididty, StringFormat={}{0:0}%}"/>
+                </StackPanel>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding BME280Pressure, StringFormat={}{0:0.000}hPa}"/>
+              </Grid>
+            </DataTemplate>
+          </ContentControl.ContentTemplate>
+        </ContentControl>
+
+        <ContentControl Content="{Binding NodeData.NodeData[9]}"
+                        IsVisible="{Binding NodeData.NodeData[9].IsPresent}"
+                        Grid.Column="0">
+          <ContentControl.ContentTemplate>
+            <DataTemplate>
+              <Grid ColumnDefinitions="Auto"
+                    RowDefinitions="Auto,Auto,Auto"
+                    ShowGridLines="True">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding BME280Humididty, StringFormat={}{0:0}%}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding BME280Pressure, StringFormat={}{0:0.000}hPa}"/>
+              </Grid>
+            </DataTemplate>
+          </ContentControl.ContentTemplate>
+        </ContentControl>
+      </StackPanel>
+    </Grid>
+
   </Grid>
 </UserControl>
