@@ -8,4 +8,17 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="IndoorClimateDesktop.Avalonia"
         Content="{Binding Content}">
+  <Grid ColumnDefinitions="*"
+        RowDefinitions="100,*"
+        ShowGridLines="True">
+    <Grid ColumnDefinitions="*,*,*"
+        RowDefinitions="*"
+        ShowGridLines="True"
+        Grid.Row="1">
+      <UserControl Grid.Column="0"
+                   Background="green"
+                   Content="{Binding Content}">
+      </UserControl>
+    </Grid>
+  </Grid>
 </Window>
