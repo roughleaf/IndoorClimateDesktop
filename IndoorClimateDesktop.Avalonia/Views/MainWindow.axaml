@@ -10,20 +10,20 @@
         Width="800"
         Height="480">
   <Grid ColumnDefinitions="*"
-        RowDefinitions="30,*"
+        RowDefinitions="200,*"
         ShowGridLines="True">
-    <Grid ColumnDefinitions="*,*,*"
+    <UserControl Grid.Column="0"
+                   Content="{Binding NodeContent}">
+    </UserControl>
+    <Grid ColumnDefinitions="*,*"
         RowDefinitions="*"
         ShowGridLines="True"
         Grid.Row="1">
       <UserControl Grid.Column="0"
-                   Content="{Binding NodeContent}">
-      </UserControl>
-      <UserControl Grid.Column="1"
                   Background="Aqua"
                   Content="{Binding AirQualityContent}">
       </UserControl>
-      <UserControl Grid.Column="2"
+      <UserControl Grid.Column="1"
                   Background="DarkGray"
                   Content="{Binding WeatherForcastContent}">
       </UserControl>
