@@ -46,7 +46,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="15,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="Outside" TextAlignment="Center"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
@@ -64,7 +64,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="5,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
@@ -82,7 +82,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="5,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
@@ -100,7 +100,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="5,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
@@ -118,7 +118,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="5,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
@@ -141,7 +141,7 @@
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
-                  Margin="15,5,5,5">
+                  Margin="10,5,0,5">
               <TextBlock Grid.Row="0" Grid.Column="0" Text="WeatherPi" TextAlignment="Center"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
