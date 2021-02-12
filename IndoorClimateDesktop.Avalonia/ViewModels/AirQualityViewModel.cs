@@ -8,5 +8,6 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 {
     public class AirQualityViewModel : ViewModelBase
     {
+
     }
 }
