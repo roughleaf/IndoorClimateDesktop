@@ -13,7 +13,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
 
     public class AirQualityData
     {
-        public IEnumerable<AirQualityTimeline> timelines { get; set; }
+        public IList<AirQualityTimeline> timelines { get; set; }
     }
 
     public class AirQualityTimeline
@@ -21,7 +21,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
         public string timestep { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
-        public IEnumerable<AirQualityInterval> intervals { get; set; }
+        public IList<AirQualityInterval> intervals { get; set; }
     }
 
     public class AirQualityInterval

@@ -42,30 +42,52 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel
 
                 ApiClimacelAirQualityAndPollen apiClimacelAirQualityAndPollen = JsonSerializer.Deserialize<ApiClimacelAirQualityAndPollen>(jsonResponse, opts);
 
-                ClimacelAirQualityAndPollenData climacelAirQualityAndPollenData = new ClimacelAirQualityAndPollenData();
-
-                //return climacelAirQualityAndPollenData;
-                return (ClimacelAirQualityAndPollenData)apiClimacelAirQualityAndPollen.data.timelines.Select(airQualityTimeline => new ClimacelAirQualityAndPollenData()
+                ClimacelAirQuality climacelAirQuality = new ClimacelAirQuality
                 {
-                    TimeStamp = airQualityTimeline.startTime,
-                    ClimacelAirQuality = (ClimacelAirQuality)airQualityTimeline.intervals.Select(climacelAirQuality => new ClimacelAirQuality
-                    {
-                        ParticulateMatter10 = climacelAirQuality.values.particulateMatter10,
-                        ParticulateMatter25 = climacelAirQuality.values.particulateMatter25,
-                        PollutantCO = climacelAirQuality.values.pollutantCO,
-                        PollutantNO2 = climacelAirQuality.values.pollutantNO2,
-                        PollutantO3 = climacelAirQuality.values.pollutantO3,
-                        PollutantSO2 = climacelAirQuality.values.pollutantSO2
-                    }),
-                    ClimacelPollenIndex = (ClimacelPollenIndex)airQualityTimeline.intervals.Select(climacelPollenIndex => new ClimacelPollenIndex
-                    {
-                        GrassGrassIndex = climacelPollenIndex.values.grassGrassIndex,
-                        GrassIndex = climacelPollenIndex.values.grassIndex,
-                        TreeIndex = climacelPollenIndex.values.treeIndex,
-                        WeedIndex = climacelPollenIndex.values.weedIndex,
-                        WeedRagweedIndex = climacelPollenIndex.values.weedRagweedIndex
-                    })
-                });
+                    ParticulateMatter10 = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.particulateMatter10,
+                    ParticulateMatter25 = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.particulateMatter25,
+                    PollutantCO = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.pollutantCO,
+                    PollutantNO2 = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.pollutantNO2,
+                    PollutantO3 = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.pollutantO3,
+                    PollutantSO2 = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.pollutantSO2
+                };
+                ClimacelPollenIndex climacelPollenIndex = new ClimacelPollenIndex
+                {
+                    GrassGrassIndex = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.grassGrassIndex,
+                    GrassIndex = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.grassIndex,
+                    TreeIndex = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.treeIndex,
+                    WeedIndex = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.weedIndex,
+                    WeedRagweedIndex = apiClimacelAirQualityAndPollen.data.timelines[0].intervals[0].values.weedRagweedIndex
+                };
+                ClimacelAirQualityAndPollenData climacelAirQualityAndPollenData = new ClimacelAirQualityAndPollenData
+                {
+                    TimeStamp = apiClimacelAirQualityAndPollen.data.timelines[0].startTime,
+                    ClimacelAirQuality = climacelAirQuality,
+                    ClimacelPollenIndex = climacelPollenIndex
+                };
+
+                return climacelAirQualityAndPollenData;
+                //return (ClimacelAirQualityAndPollenData)apiClimacelAirQualityAndPollen.data.timelines.Select(airQualityTimeline => new ClimacelAirQualityAndPollenData()
+                //{
+                //    TimeStamp = airQualityTimeline.startTime,
+                //    ClimacelAirQuality = (ClimacelAirQuality)airQualityTimeline.intervals.Select(climacelAirQuality => new ClimacelAirQuality
+                //    {
+                //        ParticulateMatter10 = climacelAirQuality.values.particulateMatter10,
+                //        ParticulateMatter25 = climacelAirQuality.values.particulateMatter25,
+                //        PollutantCO = climacelAirQuality.values.pollutantCO,
+                //        PollutantNO2 = climacelAirQuality.values.pollutantNO2,
+                //        PollutantO3 = climacelAirQuality.values.pollutantO3,
+                //        PollutantSO2 = climacelAirQuality.values.pollutantSO2
+                //    }),
+                //    ClimacelPollenIndex = (ClimacelPollenIndex)airQualityTimeline.intervals.Select(climacelPollenIndex => new ClimacelPollenIndex
+                //    {
+                //        GrassGrassIndex = climacelPollenIndex.values.grassGrassIndex,
+                //        GrassIndex = climacelPollenIndex.values.grassIndex,
+                //        TreeIndex = climacelPollenIndex.values.treeIndex,
+                //        WeedIndex = climacelPollenIndex.values.weedIndex,
+                //        WeedRagweedIndex = climacelPollenIndex.values.weedRagweedIndex
+                //    })
+                //});
             }
         }
 

@@ -38,6 +38,8 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
         public ClimateDataViewModel()
         {
             NodeData = new ClimateData { MacAddress = "Waiting for connection..." };
+            string? climacelApiKey = ConfigurationManager.AppSettings.Get("ClimacelApiKey");
+            string? climacelLocationId = ConfigurationManager.AppSettings.Get("ClimacelHomeLocationId");
             airData = new ClimacelAirQualityAndPollenData();
         }       
 
@@ -47,7 +49,8 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
             string? climacelApiKey = ConfigurationManager.AppSettings.Get("ClimacelApiKey");
             string? climacelLocationId = ConfigurationManager.AppSettings.Get("ClimacelHomeLocationId");
             NodeData = ApiIndoorClimateLocalDataService.GetLocalClimateData();
-            await GetAirQualityAsync(climacelLocationId, climacelApiKey);
+            //await GetAirQualityAsync(climacelLocationId, climacelApiKey);
+            airData = await apiClimacelService.GetAirQualityAndPollenData(climacelApiKey, climacelLocationId);            
         }
 
         async Task GetAirQualityAsync(string location, string apiKey)
