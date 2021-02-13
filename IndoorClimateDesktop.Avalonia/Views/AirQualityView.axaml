@@ -2,8 +2,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
              x:Class="IndoorClimateDesktop.Avalonia.Views.AirQualityView">
-  AirQualityView
-  Data from AirQuality API comes here
+  <Grid ColumnDefinitions="300,*">
+    <Button Content="Get AirQuality Data"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            Command="{Binding GetApiAirQualityData}"/>
+    <StackPanel Orientation="Vertical" Grid.Column="0">
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="ParticulateMatter10: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.ParticulateMatter10}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="ParticulateMatter25: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.ParticulateMatter25}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="PollutantCO: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.PollutantCO}"/>        
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="PollutantNO2: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.PollutantNO2}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="PollutantO3: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.PollutantO3}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="PollutantSO2: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelAirQuality.PollutantSO2}"/>
+      </Grid>
+      <TextBlock Text="=================================="/>
+
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="GrassGrassIndex: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassGrassIndex}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="GrassIndex: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassIndex}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="TreeIndex: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.TreeIndex}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="WeedIndex: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedIndex}"/>
+      </Grid>
+      <Grid ColumnDefinitions="*,*">
+        <TextBlock Grid.Column="0" Text="WeedRagweedIndex: "/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedRagweedIndex}"/>
+      </Grid>
+    </StackPanel>
+  </Grid>
 </UserControl>

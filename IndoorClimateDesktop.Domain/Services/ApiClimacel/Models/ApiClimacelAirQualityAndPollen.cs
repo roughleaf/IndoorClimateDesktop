@@ -6,31 +6,33 @@ using System.Threading.Tasks;
 
 namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
 {
+
+
     public class ApiClimacelAirQualityAndPollen
     {
-        public AirQualityData data { get; set; }
+        public Data data { get; set; }
     }
 
-    public class AirQualityData
+    public class Data
     {
-        public IList<AirQualityTimeline> timelines { get; set; }
+        public Timeline[] timelines { get; set; }
     }
 
-    public class AirQualityTimeline
+    public class Timeline
     {
         public string timestep { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
-        public IList<AirQualityInterval> intervals { get; set; }
+        public Interval[] intervals { get; set; }
     }
 
-    public class AirQualityInterval
+    public class Interval
     {
         public DateTime startTime { get; set; }
-        public AirQualityValues values { get; set; }
+        public Values values { get; set; }
     }
 
-    public class AirQualityValues
+    public class Values
     {
         public float particulateMatter25 { get; set; }
         public float particulateMatter10 { get; set; }
@@ -39,11 +41,9 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
         public float pollutantCO { get; set; }
         public float pollutantSO2 { get; set; }
         public int treeIndex { get; set; }
-        public int grassIndex { get; set; }
-        public int grassGrassIndex { get; set; }
+        public float grassIndex { get; set; }
+        public float grassGrassIndex { get; set; }
         public float weedIndex { get; set; }
         public float weedRagweedIndex { get; set; }
     }
-
-
 }

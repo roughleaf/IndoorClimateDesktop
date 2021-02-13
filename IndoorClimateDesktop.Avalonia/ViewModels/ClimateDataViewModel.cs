@@ -15,8 +15,7 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 {
     public class ClimateDataViewModel : ViewModelBase
     {
-        ApiIndoorClimateLocalDataService apiIndoorClimateLocalDataService = new ApiIndoorClimateLocalDataService();
-        ApiClimacelService apiClimacelService = new ApiClimacelService();
+        ApiIndoorClimateLocalDataService apiIndoorClimateLocalDataService = new ApiIndoorClimateLocalDataService();        
         
         private ClimateData? nodeData;
 
@@ -26,37 +25,18 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
             private set => this.RaiseAndSetIfChanged(ref nodeData, value);
         }
 
-        private ClimacelAirQualityAndPollenData airData;
-
-        public ClimacelAirQualityAndPollenData AirData
-        {
-            get { return airData; }
-            private set => this.RaiseAndSetIfChanged(ref airData, value);
-        }
-
-
         public ClimateDataViewModel()
         {
             NodeData = new ClimateData { MacAddress = "Waiting for connection..." };
-            string? climacelApiKey = ConfigurationManager.AppSettings.Get("ClimacelApiKey");
-            string? climacelLocationId = ConfigurationManager.AppSettings.Get("ClimacelHomeLocationId");
-            airData = new ClimacelAirQualityAndPollenData();
         }       
 
-        public async Task ButtonPushed()
+        public void ButtonPushed()
         {
-            string? apiKey = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey");
-            string? climacelApiKey = ConfigurationManager.AppSettings.Get("ClimacelApiKey");
-            string? climacelLocationId = ConfigurationManager.AppSettings.Get("ClimacelHomeLocationId");
+            string? apiKey = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey");            
             NodeData = ApiIndoorClimateLocalDataService.GetLocalClimateData();
-            //await GetAirQualityAsync(climacelLocationId, climacelApiKey);
-            airData = await apiClimacelService.GetAirQualityAndPollenData(climacelApiKey, climacelLocationId);            
         }
 
-        async Task GetAirQualityAsync(string location, string apiKey)
-        {
-            airData = await apiClimacelService.GetAirQualityAndPollenData(apiKey, location);
-        }
+       
 
     }
 }
