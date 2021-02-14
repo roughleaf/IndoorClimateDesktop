@@ -1,5 +1,6 @@
 ﻿using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
 using IndoorClimateDesktop.Domain.Services.ApiClimacel;
+using IndoorClimateDesktop.Domain.Services;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 {
     public class AirQualityViewModel : ViewModelBase
     {
-        ApiClimacelService apiClimacelService = new ApiClimacelService();
+        //ApiClimacelService apiClimacelService = new ApiClimacelService();
+        IClimacelApi climacelApi = new ApiClimacelService();
 
         private ClimacelAirQualityAndPollenData? airData;
 
@@ -36,7 +38,15 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 
         async void GetAirQualityAsync(string location, string apiKey)
         {
-            AirData = await apiClimacelService.GetAirQualityAndPollenData(apiKey, location);
+            //AirData = await apiClimacelService.GetAirQualityAndPollenData(apiKey, location);
+            try     // Intermittend array out of bound exception. Going to attempt to modify my models to see if that eliminates the problem.
+            {
+                AirData = await climacelApi.GetAirQualityAndPollenData(apiKey, location);
+            }
+            catch
+            {
+
+            }
         }
     }
 }
