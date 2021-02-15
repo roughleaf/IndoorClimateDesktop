@@ -40,23 +40,23 @@
 
       <Grid ColumnDefinitions="*,*">
         <TextBlock Grid.Column="0" Text="GrassGrassIndex: "/>
-        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassGrassIndex}"/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassGrassIndex, StringFormat={}{0:0.00}}"/>
       </Grid>
       <Grid ColumnDefinitions="*,*">
         <TextBlock Grid.Column="0" Text="GrassIndex: "/>
-        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassIndex}"/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.GrassIndex, StringFormat={}{0:0.00}}"/>
       </Grid>
       <Grid ColumnDefinitions="*,*">
         <TextBlock Grid.Column="0" Text="TreeIndex: "/>
-        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.TreeIndex}"/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.TreeIndex, StringFormat={}{0:0.00}}"/>
       </Grid>
       <Grid ColumnDefinitions="*,*">
         <TextBlock Grid.Column="0" Text="WeedIndex: "/>
-        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedIndex}"/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedIndex, StringFormat={}{0:0.00}}"/>
       </Grid>
       <Grid ColumnDefinitions="*,*">
         <TextBlock Grid.Column="0" Text="WeedRagweedIndex: "/>
-        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedRagweedIndex}"/>
+        <TextBlock Grid.Column="1" Text="{Binding AirData.ClimacelPollenIndex.WeedRagweedIndex, StringFormat={}{0:0.00}}"/>
       </Grid>
     </StackPanel>
   </Grid>

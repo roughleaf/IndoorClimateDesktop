@@ -14,7 +14,7 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
     public class AirQualityViewModel : ViewModelBase
     {
         //ApiClimacelService apiClimacelService = new ApiClimacelService();
-        IClimacelApi climacelApi = new ApiClimacelService();
+        readonly IClimacelApi climacelApi = new ApiClimacelService();
 
         private ClimacelAirQualityAndPollenData? airData;
 

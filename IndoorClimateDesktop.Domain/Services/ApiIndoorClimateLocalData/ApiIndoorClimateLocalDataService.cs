@@ -16,19 +16,7 @@ namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData
         {
             string JsonString = IndoorClimateTcpServer.Listen(13000);
 
-            ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);
-
-            for (int i = 0; i < 10; i++)
-            {
-                if (apiClimateData.NodeData[i].DateStamp == "")
-                {
-                    apiClimateData.NodeData[i].IsPresent = false;
-                }
-                else
-                {
-                    apiClimateData.NodeData[i].IsPresent = true;
-                }
-            }
+            ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);         
 
             return apiClimateData;
         }

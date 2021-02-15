@@ -47,7 +47,7 @@
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
                   Margin="10,5,0,5">
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="Outside" TextAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}" TextAlignment="Center"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
                 <TextBlock Text="{Binding BME280Humididty, StringFormat={}{0:0}%}"/>
@@ -58,8 +58,8 @@
         </ContentControl.ContentTemplate>
       </ContentControl>
 
-      <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                    IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
+      <ContentControl Content="{Binding NodeData.NodeData[1]}"
+                    IsVisible="{Binding NodeData.NodeData[1].IsPresent}">
         <ContentControl.ContentTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*"
@@ -76,8 +76,8 @@
         </ContentControl.ContentTemplate>
       </ContentControl>
 
-      <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                    IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
+      <ContentControl Content="{Binding NodeData.NodeData[2]}"
+                    IsVisible="{Binding NodeData.NodeData[2].IsPresent}">
         <ContentControl.ContentTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*"
@@ -94,8 +94,8 @@
         </ContentControl.ContentTemplate>
       </ContentControl>
 
-      <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                    IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
+      <ContentControl Content="{Binding NodeData.NodeData[3]}"
+                    IsVisible="{Binding NodeData.NodeData[3].IsPresent}">
         <ContentControl.ContentTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*"
@@ -112,8 +112,8 @@
         </ContentControl.ContentTemplate>
       </ContentControl>
 
-      <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                    IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
+      <ContentControl Content="{Binding NodeData.NodeData[4]}"
+                    IsVisible="{Binding NodeData.NodeData[4].IsPresent}">
         <ContentControl.ContentTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*"
@@ -135,14 +135,14 @@
               Spacing="15"
                 Grid.Column="0"
                 Grid.Row="1">
-    <ContentControl Content="{Binding NodeData.NodeData[9]}"
-                    IsVisible="{Binding NodeData.NodeData[9].IsPresent}">
+    <ContentControl Content="{Binding NodeData.NodeData[5]}"
+                    IsVisible="{Binding NodeData.NodeData[5].IsPresent}">
         <ContentControl.ContentTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*"
                   RowDefinitions="Auto, Auto, Auto"
                   Margin="10,5,0,5">
-              <TextBlock Grid.Row="0" Grid.Column="0" Text="WeatherPi" TextAlignment="Center"/>
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NodeID}" TextAlignment="Center"/>
               <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Spacing="10">
                 <TextBlock Text="{Binding DS18B20Temperature, StringFormat={}{0:0.0}°C}"/>
                 <TextBlock Text="{Binding BME280Humididty, StringFormat={}{0:0}%}"/>

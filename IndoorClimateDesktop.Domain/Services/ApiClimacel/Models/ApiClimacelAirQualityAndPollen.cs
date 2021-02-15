@@ -40,7 +40,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
         public float pollutantNO2 { get; set; }
         public float pollutantCO { get; set; }
         public float pollutantSO2 { get; set; }
-        public int treeIndex { get; set; }
+        public float treeIndex { get; set; }
         public float grassIndex { get; set; }
         public float grassGrassIndex { get; set; }
         public float weedIndex { get; set; }

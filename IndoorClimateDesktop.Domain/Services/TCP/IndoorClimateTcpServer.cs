@@ -27,41 +27,43 @@ namespace IndoorClimateDesktop.Services.TCP
 
                 server.Start();
 
-                // Buffer for reading data
-                Byte[] bytes = new Byte[8192];
-                String data = null;
-                String returnString = "Data Received";
+                byte[] bytes = new byte[8192];
+                byte[] headerBytes = new byte[2];
+                //ushort dataLength = 0;
+                string data = null;
+                string returnString = "Data Received";
+                int i = 0;
+                int bytesRead = 0;
+                int bytesToRead = 0;
 
-                    //Console.Write("Waiting for a connection... ");
+                // Perform a blocking call to accept requests.
+                TcpClient client = server.AcceptTcpClient();
+                
+                NetworkStream stream = client.GetStream();
 
-                    // Perform a blocking call to accept requests.
-                    // You could also use server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
+                stream.Read(headerBytes, 0, 2);
+                if (!BitConverter.IsLittleEndian)       // The client machine is constant, the server must change to adapt to the clinet.
+                    Array.Reverse(headerBytes);
 
-                    data = null;
+                bytesToRead = BitConverter.ToUInt16(headerBytes, 0);    // type conversion should be fine as long as value is not negative
 
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
+                do
+                {
+                    i = stream.Read(bytes, bytesRead, bytesToRead);
+                    bytesRead += i;
+                    bytesToRead -= i;
+                }
+                while (bytesToRead > 0);
 
-                    int i;
+                data = System.Text.Encoding.ASCII.GetString(bytes, 0, bytesRead);
 
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(returnString);
 
+                stream.Write(msg, 0, msg.Length);
 
+                client.Close();
 
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(returnString);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine("Sent: {0}", returnString);
-                    }
-                   
-                    client.Close();
-
-                    return data;
+                return data;
             }
             catch (SocketException e)
             {
@@ -69,7 +71,6 @@ namespace IndoorClimateDesktop.Services.TCP
             }
             finally
             {
-                // Stop listening for new clients.
                 server.Stop();
             }
             return null;

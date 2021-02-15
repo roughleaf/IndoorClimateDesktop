@@ -34,9 +34,7 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
         {
             string? apiKey = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey");            
             NodeData = ApiIndoorClimateLocalDataService.GetLocalClimateData();
-        }
-
-       
+        }       
 
     }
 }

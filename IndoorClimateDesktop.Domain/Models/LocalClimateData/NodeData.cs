@@ -15,5 +15,6 @@ namespace IndoorClimateDesktop.Domain.Models
         public float DS18B20Temperature { get; set; }
         public int RainCount { get; set; }
         public bool IsPresent { get; set; }
+        public string Label { get; set; }
     }
 }
