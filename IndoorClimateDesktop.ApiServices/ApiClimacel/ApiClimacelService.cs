@@ -1,5 +1,6 @@
 ﻿using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
-using IndoorClimateDesktop.Domain.Services.ApiClimacel.Models;
+using IndoorClimateDesktop.Services.ApiClimacel.Models;
+using IndoorClimateDesktop.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

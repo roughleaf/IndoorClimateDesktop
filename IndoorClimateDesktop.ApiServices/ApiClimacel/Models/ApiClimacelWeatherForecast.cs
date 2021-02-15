@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IndoorClimateDesktop.Domain.Services.ApiClimacel.Models
+namespace IndoorClimateDesktop.Services.ApiClimacel.Models
 {
     public class ApiClimacelWeatherForecast
     {

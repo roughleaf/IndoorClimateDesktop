@@ -1,12 +1,12 @@
 ﻿using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
-using IndoorClimateDesktop.Domain.Services.ApiClimacel.Models;
+using IndoorClimateDesktop.Services.ApiClimacel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IndoorClimateDesktop.Domain.Services
+namespace IndoorClimateDesktop.Services
 {
     public interface IClimacelApi
     {

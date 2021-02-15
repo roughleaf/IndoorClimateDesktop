@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IndoorClimateDesktop.Services;
 
 namespace IndoorClimateDesktop.Avalonia.ViewModels
 {

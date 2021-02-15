@@ -16,6 +16,7 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IndoorClimateDesktop.ApiServices\IndoorClimateDesktop.Services.csproj" />
     <ProjectReference Include="..\IndoorClimateDesktop.Domain\IndoorClimateDesktop.Domain.csproj" />
   </ItemGroup>
 </Project>
