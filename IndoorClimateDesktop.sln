@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndoorClimateDesktop.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndoorClimateDesktop.Avalonia", "IndoorClimateDesktop.Avalonia\IndoorClimateDesktop.Avalonia.csproj", "{71FA10CE-4D63-4DD9-96B5-B45DCFA609D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndoorClimateDesktop.Services", "IndoorClimateDesktop.ApiServices\IndoorClimateDesktop.Services.csproj", "{03059CFD-A3BF-4974-9DAF-565995DC5C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndoorClimateDesktop.Services", "IndoorClimateDesktop.Services\IndoorClimateDesktop.Services.csproj", "{F03B7A17-D719-4263-B874-C1F3DD2DF0AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{71FA10CE-4D63-4DD9-96B5-B45DCFA609D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71FA10CE-4D63-4DD9-96B5-B45DCFA609D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71FA10CE-4D63-4DD9-96B5-B45DCFA609D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03059CFD-A3BF-4974-9DAF-565995DC5C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03059CFD-A3BF-4974-9DAF-565995DC5C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03059CFD-A3BF-4974-9DAF-565995DC5C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03059CFD-A3BF-4974-9DAF-565995DC5C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F03B7A17-D719-4263-B874-C1F3DD2DF0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03B7A17-D719-4263-B874-C1F3DD2DF0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F03B7A17-D719-4263-B874-C1F3DD2DF0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F03B7A17-D719-4263-B874-C1F3DD2DF0AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
