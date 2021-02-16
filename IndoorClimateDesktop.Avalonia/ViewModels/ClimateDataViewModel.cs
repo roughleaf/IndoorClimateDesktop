@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Configuration;
 using IndoorClimateDesktop.Services.ApiIndoorClimateLocalData;
 using System.Collections.ObjectModel;
-using IndoorClimateDesktop.Domain.Services.ApiClimacel;
 using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
 
 namespace IndoorClimateDesktop.Avalonia.ViewModels

@@ -1,5 +1,4 @@
 ﻿using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
-using IndoorClimateDesktop.Domain.Services.ApiClimacel;
 using IndoorClimateDesktop.Domain.Services;
 using ReactiveUI;
 using System;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IndoorClimateDesktop.Services;
+using IndoorClimateDesktop.Services.ApiClimacel;
 
 namespace IndoorClimateDesktop.Avalonia.ViewModels
 {

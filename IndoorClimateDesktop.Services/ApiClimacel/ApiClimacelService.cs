@@ -1,6 +1,5 @@
 ﻿using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
 using IndoorClimateDesktop.Services.ApiClimacel.Models;
-using IndoorClimateDesktop.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,10 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using IndoorClimateDesktop.Domain.Services;
+using IndoorClimateDesktop.Domain.Models.Climacell.WeatherForecast;
 
-namespace IndoorClimateDesktop.Domain.Services.ApiClimacel
+namespace IndoorClimateDesktop.Services.ApiClimacel
 {
     public class ApiClimacelService : IClimacelApi
     {
@@ -35,6 +36,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel
                 HttpResponseMessage apiResponse = await client.GetAsync(requestUri);
 
                 string jsonResponse = await apiResponse.Content.ReadAsStringAsync();
+                string Status = apiResponse.StatusCode.ToString();
 
                 var opts = new JsonSerializerOptions
                 {
@@ -68,6 +70,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel
                 };
 
                 return climacelAirQualityAndPollenData;
+
                 //return (ClimacelAirQualityAndPollenData)apiClimacelAirQualityAndPollen.data.timelines.Select(airQualityTimeline => new ClimacelAirQualityAndPollenData()
                 //{
                 //    TimeStamp = airQualityTimeline.startTime,
@@ -92,7 +95,7 @@ namespace IndoorClimateDesktop.Domain.Services.ApiClimacel
             }
         }
 
-        public Task<ApiClimacelWeatherForecast> GetClimacelWeatherForecast(string apiKey, string locationId)
+        public Task<ClimacelWeatherForecastData> GetClimacelWeatherForecast(string apiKey, string locationId)
         {
             throw new NotImplementedException();
         }
