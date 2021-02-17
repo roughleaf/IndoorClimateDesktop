@@ -12,9 +12,9 @@ namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData
 {
     public class ApiIndoorClimateLocalDataService
     {
-        public static ClimateData GetLocalClimateData()
+        public async static Task<ClimateData> GetLocalClimateData()
         {
-            string JsonString = IndoorClimateTcpServer.Listen(13000);
+            string JsonString = await IndoorClimateTcpServer.Listen(13000);
 
             ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);         
 

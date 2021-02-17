@@ -10,7 +10,7 @@ namespace IndoorClimateDesktop.Services.TCP
 {
     class IndoorClimateTcpServer
     {
-       public static string Listen(int port)
+       public async static Task<string> Listen(int port)
         {
             TcpListener server = null;
             try
@@ -37,7 +37,7 @@ namespace IndoorClimateDesktop.Services.TCP
                 int bytesToRead = 0;
 
                 // Perform a blocking call to accept requests.
-                TcpClient client = server.AcceptTcpClient();
+                TcpClient client = await server.AcceptTcpClientAsync();
                 
                 NetworkStream stream = client.GetStream();
 

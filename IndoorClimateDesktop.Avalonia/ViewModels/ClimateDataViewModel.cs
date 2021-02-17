@@ -29,10 +29,10 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
             NodeData = new ClimateData { MacAddress = "Waiting for connection..." };
         }       
 
-        public void ButtonPushed()
+        async void ButtonPushed()
         {
             string? apiKey = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey");            
-            NodeData = ApiIndoorClimateLocalDataService.GetLocalClimateData();
+            NodeData = await ApiIndoorClimateLocalDataService.GetLocalClimateData();
         }       
 
     }
