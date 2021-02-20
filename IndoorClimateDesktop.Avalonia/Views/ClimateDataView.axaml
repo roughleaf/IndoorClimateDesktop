@@ -12,9 +12,6 @@
         RowDefinitions="*,*"
         ShowGridLines="True">
     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Spacing="15" >
-      <Button Content="Listen for data"
-              HorizontalAlignment="Stretch"
-              Command="{Binding ButtonPushed}"/>
       <TextBlock Text="{Binding NodeData.MacAddress}" TextAlignment="Center"/>
     </StackPanel>
     

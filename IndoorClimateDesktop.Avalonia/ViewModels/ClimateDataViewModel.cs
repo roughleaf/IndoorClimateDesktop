@@ -9,13 +9,14 @@ using System.Configuration;
 using IndoorClimateDesktop.Services.ApiIndoorClimateLocalData;
 using System.Collections.ObjectModel;
 using IndoorClimateDesktop.Domain.Models.Climacell.AirQuality;
+using IndoorClimateDesktop.Domain.Services;
 
 namespace IndoorClimateDesktop.Avalonia.ViewModels
 {
-    public class ClimateDataViewModel : ViewModelBase
+    public class ClimateDataViewModel : ViewModelBase, IObserver<ClimateData>
     {
-        ApiIndoorClimateLocalDataService apiIndoorClimateLocalDataService = new ApiIndoorClimateLocalDataService();        
-        
+        ApiIndoorClimateLocalDataService apiIndoorClimateLocalDataService = new ApiIndoorClimateLocalDataService();
+
         private ClimateData? nodeData;
 
         public ClimateData? NodeData
@@ -26,14 +27,24 @@ namespace IndoorClimateDesktop.Avalonia.ViewModels
 
         public ClimateDataViewModel()
         {
-            NodeData = new ClimateData { MacAddress = "Waiting for connection..." };
-        }       
+            NodeData = new ClimateData { MacAddress = "Waiting for client..." };
+            apiIndoorClimateLocalDataService.Subscribe(this);
+            apiIndoorClimateLocalDataService.GetLocalClimateData();     // This should start the service
+        }
 
-        async void ButtonPushed()
+        public void OnCompleted()
         {
-            string? apiKey = ConfigurationManager.AppSettings.Get("OpenWeatherApiKey");            
-            NodeData = await ApiIndoorClimateLocalDataService.GetLocalClimateData();
-        }       
+            // Do Nothing
+        }
 
+        public void OnError(Exception error)
+        {
+            // Do Nothing
+        }
+
+        public void OnNext(ClimateData value)       // This even is called every time data is received on my TCP socket 
+        {
+            NodeData = value;
+        }
     }
 }

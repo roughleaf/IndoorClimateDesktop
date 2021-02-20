@@ -10,15 +10,51 @@ using System.Threading.Tasks;
 
 namespace IndoorClimateDesktop.Services.ApiIndoorClimateLocalData
 {
-    public class ApiIndoorClimateLocalDataService
+    public class ApiIndoorClimateLocalDataService : IObservable<ClimateData>
     {
-        public async static Task<ClimateData> GetLocalClimateData()
+        List<IObserver<ClimateData>> observers;
+
+        public ApiIndoorClimateLocalDataService()
         {
-            string JsonString = await IndoorClimateTcpServer.Listen(13000);
+            observers = new List<IObserver<ClimateData>>();
+        }
 
-            ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);         
+        private class Unsubscriber : IDisposable
+        {
+            private List<IObserver<ClimateData>> _observers;
+            private IObserver<ClimateData> _observer;
 
-            return apiClimateData;
+            public Unsubscriber(List<IObserver<ClimateData>> observers, IObserver<ClimateData> observer)
+            {
+                this._observers = observers;
+                this._observer = observer;
+            }
+
+            public void Dispose()
+            {
+                if (!(_observer == null)) _observers.Remove(_observer);
+            }
+        }
+
+        public IDisposable Subscribe(IObserver<ClimateData> observer)
+        {
+            if (!observers.Contains(observer))
+                observers.Add(observer);
+
+            return new Unsubscriber(observers, observer);
+        }
+
+        public async void GetLocalClimateData()
+        {
+            while (true)
+            {
+                string JsonString = await IndoorClimateTcpServer.Listen(13000);     // Hopefully this blocking call will sit here and wait untill data is received. This happens every 10 minutes.
+
+                ClimateData apiClimateData = JsonSerializer.Deserialize<ClimateData>(JsonString);
+
+                foreach (var observer in observers)
+                    observer.OnNext(apiClimateData);    // This is where the magic happens, the ClimateData Object gets sent and notified
+            }
         }
     }
 }
